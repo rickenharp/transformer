@@ -5,8 +5,11 @@ require "transformer"
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
-
-Application.finalize!
+Transformer::Application.register(:fetch_file) { Transformer::FetchFile.new }
+Transformer::Application.register(:validate) { Transformer::Validate.new }
+Transformer::Application.register(:instantiate) { Transformer::Instantiate.new }
+Transformer::Application.register(:persist) { Transformer::Persist.new }
+Transformer::Application.finalize!
 
 require "pry"
 Pry.start

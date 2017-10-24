@@ -4,9 +4,9 @@ module Transformer
   class Worker
     include Dry::Transaction(container: Application)
 
-    step :fetch_file, with: 'transformer.fetch_file'
-    step :validate, with: 'transformer.validate'
-    step :instantiate, with: 'transformer.instantiate'
-    step :persist, with: 'transformer.persist'
+    step :fetch_file, with: 'fetch_file'
+    step :validate, with: 'validate'
+    step :instantiate, with: 'instantiate'
+    step :persist, with: 'persist'
   end
 end

@@ -1,4 +1,4 @@
-Application.boot(:storage) do |container|
+Transformer::Application.boot(:storage) do |container|
   init do
     require 'json'
   end

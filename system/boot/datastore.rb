@@ -1,4 +1,4 @@
-Application.boot(:datastore) do |container|
+Transformer::Application.boot(:datastore) do |container|
   start do
     container.register('datastore') do
       class Datastore
