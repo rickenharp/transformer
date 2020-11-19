@@ -6,7 +6,7 @@ module Transformer
     include Import['datastore']
 
     def call(input)
-      Right(datastore.save(input))
+      Success(datastore.save(input))
     end
   end
 end

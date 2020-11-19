@@ -9,9 +9,9 @@ module Transformer
 
     def call(input)
       example = Transformer::Example.new(input)
-      Right(example)
+      Success(example)
     rescue StandardError => exception
-      Left(exception)
+      Failure(exception)
     end
   end
 end

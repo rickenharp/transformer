@@ -7,10 +7,10 @@ module Transformer
 
     def call(filename)
       result = storage.download(filename)
-      return Left("No such file: #{filename}") unless result
-      Right(result)
+      return Failure("No such file: #{filename}") unless result
+      Success(result)
     rescue StandardError => exception
-      Left(exception)
+      Failure(exception)
     end
   end
 end
