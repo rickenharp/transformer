@@ -1,22 +1,25 @@
 require 'dry/transaction/operation'
-require 'dry/validation'
+require 'dry-validation'
 require 'json'
 
 Dry::Validation.load_extensions(:monads)
 
 module Transformer
   class Validate
-    include Dry::Transaction::Operation
-    Schema = Dry::Validation.Form do
-      required(:foo).filled
+    class Schema < Dry::Validation::Contract
+      params do
+        required(:foo).filled
+      end
     end
+    
+    include Dry::Transaction::Operation
 
     def call(input)
       data = JSON.parse(input)
-      validated = Schema.(data)
+      validated = Schema.new.(data)
       validated.to_either
     rescue StandardError => exception
-      Left(exception)
+      Failure(exception)
     end
   end
 end
